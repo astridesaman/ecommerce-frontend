@@ -13,6 +13,7 @@ export const mockProducts = [
     price: 29.99,
     image: "/tshirt.jpg",
     category: "Vêtements",
+    featured: true,
   },
   {
     id: 3,
