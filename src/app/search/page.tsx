@@ -1,11 +1,16 @@
 // src/app/search/page.tsx
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { mockProducts } from "../lib/mockProducts";
 import Image from "next/image";
 
-const SearchPage = () => {
+// make the page always dynamic so that it will never be prerendered
+export const dynamic = "force-dynamic";
+
+// client component that uses the search params
+const SearchClient = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("q")?.toLowerCase() || "";
 
@@ -52,5 +57,11 @@ const SearchPage = () => {
     </div>
   );
 };
+
+const SearchPage = () => (
+  <Suspense fallback={<div className="p-6">Chargement...</div>}>
+    <SearchClient />
+  </Suspense>
+);
 
 export default SearchPage;
