@@ -14,6 +14,6 @@ const ModalProvider = () => {
         return null;
     }
 
-    return 0;
+    return null;
 }
 export default ModalProvider;
